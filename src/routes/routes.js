@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "../pages/error-page/ErrorPage";
 import Root from "../layout/Root";
 import Home from "../pages/home-page/Home";
-import AboutPage from "../pages/about-page/AboutPage";
 import DataDetails from "../pages/data-details/DataDetails";
+import BookingPage from "../pages/booking-page/BookingPage";
 
 export const routes = createBrowserRouter([
     {
@@ -21,8 +21,8 @@ export const routes = createBrowserRouter([
                 loader: async ({ params }) => await fetch(`https://api.tvmaze.com/shows/${params.id}`)
             },
             {
-                path: "/about",
-                element: <AboutPage></AboutPage>
+                path: "/booking-page",
+                element: <BookingPage></BookingPage>
             }
 
         ]

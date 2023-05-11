@@ -9,7 +9,7 @@ const NavbarSection = () => {
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
-                <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+                <Navbar.Brand href="#" className='text-success'>MediaInfoClub</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -18,7 +18,7 @@ const NavbarSection = () => {
                         navbarScroll
                     >
                         <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/about">About</Nav.Link>
+                        <Nav.Link href="/booking-page">Booking</Nav.Link>
 
                     </Nav>
                     <Form className="d-flex">

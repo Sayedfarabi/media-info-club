@@ -5,7 +5,7 @@ import DataSection from './data-section/DataSection';
 const Home = () => {
 
     return (
-        <div>
+        <div className='py-5 px-2'>
             <DataSection></DataSection>
         </div>
     );
