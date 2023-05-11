@@ -1,6 +1,7 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 
-const DetailsData = ({ data, isSelf }) => {
+const DetailsData = ({ data, isSelf, handleShow }) => {
     // console.log(isSelf);
     return (
         <div className='row'>
@@ -10,7 +11,9 @@ const DetailsData = ({ data, isSelf }) => {
                         <img src={data?.image?.original} alt="" style={{ height: '400px', width: `${isSelf ? "18rem" : "10rem"}` }} />
                     </div>
                     <div className='text-center mt-3'>
-                        <button className='btn btn-primary'>Book Movie Ticket</button>
+                        <Button variant="primary" onClick={handleShow}>
+                            Book Movie Ticket
+                        </Button>
                     </div>
                 </div>
             </div>
