@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData, useLocation } from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
+import DetailsData from '../../components/data-details/DetailsData';
+import SubDetails from '../../components/sub-details/SubDetails';
 
 const DataDetails = () => {
-
+    const [modalData, setModalData] = useState(null);
     const data = useLoaderData();
     // console.log(data);
     const nextEpisodeApi = data?._links?.nextepisode?.href;
@@ -11,32 +13,35 @@ const DataDetails = () => {
 
     const { data: nextData, loading: nextLoading } = useFetch(nextEpisodeApi)
     const { data: previousData, loading: previousLoading } = useFetch(previousEpisodeApi);
-    console.log(previousData);
+    console.log(nextData);
+
     return (
         <section>
-            <div className='row'>
-                <div className='col col-md-4'>
-                    <div>
-                        <img src={data?.image?.original} alt="" style={{ height: '400px', width: '380px' }} className='mx-auto' />
-                    </div>
+
+            <div>
+                {
+                    data &&
+                    <DetailsData data={data} isSelf={true}></DetailsData>
+                }
+            </div>
+            <div className='my-4 row'>
+                <div className='col'>
+                    {
+                        previousData &&
+                        <SubDetails
+                            data={previousData}
+                            name={"Previous Episodes"}
+                            loading={previousLoading}></SubDetails>
+                    }
                 </div>
-                <div className='col col-md-8'>
-                    <div>
-                        {data?.summary}
-                    </div>
-                    <div>
-                        <div style={{ width: '400px' }} className='border p-4 rounded bg-light my-4 mx-auto'>
-                            <h4>Show Info</h4>
-                            <p className='lh-1'>Network:</p>
-                            <p className='lh-1'>Schedule:</p>
-                            <p className='lh-1'>Status:</p>
-                            <p className='lh-1'>Show Type:</p>
-                            <p className='lh-1'>Genres:</p>
-                            <p className='lh-1'>Episodes ordered:</p>
-                            <p className='lh-1'>Created by:</p>
-                            <p className='lh-1'>Official site:</p>
-                        </div>
-                    </div>
+                <div className='col'>
+                    {
+                        nextData &&
+                        <SubDetails
+                            data={nextData}
+                            name={"Next Episodes"}
+                            loading={nextLoading}></SubDetails>
+                    }
                 </div>
             </div>
         </section>
